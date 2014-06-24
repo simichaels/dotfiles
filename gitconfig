@@ -1,0 +1,8 @@
+[user]
+	name = Spencer Michaels
+	email = simichaels13@gmail.com
+[core]
+	editor = vim
+	excludesfile = /Users/spencer/.gitignore_global
+[merge]
+	tool = vimdiff
