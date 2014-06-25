@@ -1,0 +1,21 @@
+#brew-casksite() {
+#    w3m `brew cask info $1 | sed '2q;d'`
+#}
+
+brew-rmr() {
+    BREW=/usr/local/bin/brew
+    FORMULA="$*"
+
+    if [ -z "$FORMULA" ]; then
+        echo "No arguments!"
+    else
+        $BREW rm $FORMULA
+        $BREW rm $(join <($BREW leaves) <($BREW deps "$FORMULA"))
+    fi
+}
+
+alias math='~/Code/CPP/MathExpression/mathtest'
+alias chinese='python3 ~/Documents/Chinese/Code/tones-generator.py'
+alias chinesenum='python3 ~/Documents/Chinese/Code/numbers-test.py'
+alias oh='open .' # Open the current directory in Finder
+alias cask='brew cask'
