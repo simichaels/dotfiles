@@ -22,7 +22,7 @@ export PATH="$(brew --prefix sqlite)/bin:$PATH"     # Use brew's newer sqlite
 
 export MANPATH="/usr/local/man:$MANPATH"
 
- Use vim when over SSH, MacVim otherwise
+# Use vim when over SSH, MacVim otherwise
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
