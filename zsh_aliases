@@ -14,8 +14,7 @@ brew-rmr() {
     fi
 }
 
-alias math='~/Code/CPP/MathExpression/mathtest'
-alias chinese='python3 ~/Documents/Chinese/Code/tones-generator.py'
-alias chinesenum='python3 ~/Documents/Chinese/Code/numbers-test.py'
+alias o='open' # I'm lazy.
 alias oh='open .' # Open the current directory in Finder
 alias cask='brew cask'
+alias vrc='$EDITOR ~/.vimrc'

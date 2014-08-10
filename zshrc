@@ -22,16 +22,11 @@ export PATH="$(brew --prefix sqlite)/bin:$PATH"     # Use brew's newer sqlite
 
 export MANPATH="/usr/local/man:$MANPATH"
 
-# Use vim when over SSH, MacVim otherwise
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
 # Online help for zsh
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
 
 source $HOME/.zsh_aliases
+
+#tmux new -s main
