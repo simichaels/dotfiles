@@ -82,6 +82,12 @@
     noremap <S-Tab> :bp<CR>
     map <esc><esc> :w<cr>
 
+    " Window navigation
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+
     " Save a file as root, even if Vim wasn't started as root
     noremap <leader>w :w !sudo tee % > /dev/null<CR>
 
