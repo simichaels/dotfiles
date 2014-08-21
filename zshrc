@@ -2,7 +2,6 @@
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:"        # The usual
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"  # Standard homebrew paths
 export PATH="/usr/local/opt/ruby/bin:$PATH"         # Ruby gems for homebrew
-export PATH="$(brew --prefix sqlite)/bin:$PATH"     # Use brew's newer sqlite
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -19,7 +18,7 @@ stty erase "^?"
 # oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 #ZSH_THEME="blinks"
 #SOLARIZED_THEME="light" # For blinks
 

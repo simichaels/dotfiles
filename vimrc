@@ -16,6 +16,7 @@
     set backspace=2             " Make backspace act like it would in any other program
     "set mouse=a                 " Enable the mouse -- warning, makes copying from terminal difficult
     "set clipboard=unnamed       " Use the OS clipboard
+    set encoding=utf-8
 
     " Set more sensible undo, swap, and backup directories to as to keep the working directory clean
     set undodir=~/.vim/.undo//,/var/tmp//,/tmp//
@@ -29,7 +30,6 @@
 
     colorscheme solarized
     set background=light
-    call togglebg#map("<F5>")   " For solarized
 
     if has("gui_running")
         set guifont=DejaVu_Sans_Mono_for_Powerline:h12
@@ -74,6 +74,9 @@
 " {{{ KEY MAPPINGS
     let mapleader = ","
 
+    " Switch between light/dark background in Solarized
+    call togglebg#map("<leader>bg")
+
     " General-purpose
     nnoremap <leader>ev :split $MYVIMRC<cr>
     nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -81,6 +84,11 @@
     noremap <Tab> :bn<CR>
     noremap <S-Tab> :bp<CR>
     map <esc><esc> :w<cr>
+    inoremap jj <ESC>
+
+    " Move to next column rather than next line when wrapped
+    noremap j gj
+    noremap k gk
 
     " Window navigation
     nnoremap <C-h> <C-w>h
@@ -124,8 +132,8 @@
                 \ "PointerBindsToType" : "true",
                 \ "BreakBeforeBraces" : "Stroustrup",
                 \ "ColumnLimit" : 80 }
-    autocmd FileType c,cpp,objc nnoremap <buffer><Leader>x :<C-u>ClangFormat<CR>
-    autocmd FileType c,cpp,objc vnoremap <buffer><Leader>x :ClangFormat<CR>
+    autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+    autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 " }}}
 
 " {{{ SYNTASTIC
