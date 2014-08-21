@@ -150,7 +150,11 @@
     " Python 3 syntax checking
     let g:syntastic_python_python_exe = 'python3'
 " }}}
-"
+
+" {{{ TAGBAR
+    let g:tagbar_width=30
+" }}}
+
 " {{{ YOUCOMPLETEME
     let g:ycm_global_ycm_extra_conf = "/Users/spencer/.ycm_extra_conf.py"
     let g:ycm_confirm_extra_conf = 0 " Use alternate confs without confirmation
@@ -158,8 +162,4 @@
     let g:ycm_autoclose_preview_window_after_completion = 1
     " Alternately, disable this completely
     "set completeopt-=preview
-" }}}
-
-" {{{ TAGBAR
-    let g:tagbar_width=30
 " }}}
