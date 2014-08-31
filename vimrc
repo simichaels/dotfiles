@@ -134,6 +134,9 @@
                 \ "ColumnLimit" : 80 }
     autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
     autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+    " Format C-like files automatically just before saving
+    autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
 " }}}
 
 " {{{ SYNTASTIC

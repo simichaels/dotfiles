@@ -1,0 +1,3 @@
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:"        # The usual
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"  # Standard homebrew paths
+export PATH="$PATH:$HOME/devtools/llvm-3.4.2/bin"
