@@ -6,3 +6,5 @@
 	excludesfile = /Users/spencer/.gitignore_global
 [merge]
 	tool = vimdiff
+[push]
+	default = simple

@@ -136,7 +136,7 @@
     autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
     " Format C-like files automatically just before saving
-    autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
+    "autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
 " }}}
 
 " {{{ SYNTASTIC
@@ -151,7 +151,7 @@
     hi SyntasticErrorSign guifg=#dc322f guibg=#eee8d5
 
     " Python 3 syntax checking
-    let g:syntastic_python_python_exe = 'python3'
+    let g:syntastic_python_python_exec = 'python3'
 " }}}
 
 " {{{ TAGBAR

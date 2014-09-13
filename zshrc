@@ -1,5 +1,5 @@
 # Path modifications
-source $HOME/.zsh_path
+#source $HOME/.zsh_path
 
 export MANPATH="/usr/local/man:$MANPATH"
 
