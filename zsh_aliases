@@ -14,6 +14,12 @@ brew-rmr() {
     fi
 }
 
+function mkcd
+{
+    dir="$*"
+    mkdir -p "$dir" && cd "$dir"
+}
+
 alias o='open' # I'm lazy.
 alias oh='open .' # Open the current directory in Finder
 alias cask='brew cask'
