@@ -73,6 +73,7 @@
 "
 " {{{ KEY MAPPINGS
     let mapleader = ","
+    let maplocalleader = ","
 
     " Switch between light/dark background in Solarized
     call togglebg#map("<leader>bg")
@@ -143,10 +144,6 @@
     let g:tex_flavor='latex'
     let g:Tex_TreatMacViewerAsUNIX = 1
     let g:Tex_ExecuteUNIXViewerInForeground = 1
-    let g:Tex_DefaultTargetFormat='pdf'
-    let g:Tex_ViewRule_dvi='/Applications/TeXShop.app/Contents/MacOS/TeXShop *$.pdf'
-    let g:Tex_ViewRule_pdf='/Applications/TeXShop.app/Contents/MacOS/TeXShop *$.pdf'
-    let g:Tex_ViewRule_ps='/Applications/TeXShop.app/Contents/MacOS/TeXShop *$.pdf'
 " }}}
 
 " {{{ SYNTASTIC
