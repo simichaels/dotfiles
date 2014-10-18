@@ -90,6 +90,8 @@
     " Move to next column rather than next line when wrapped
     noremap j gj
     noremap k gk
+    noremap <Down> gj
+    noremap <Up> gk
 
     " Window navigation
     nnoremap <C-h> <C-w>h
@@ -140,15 +142,12 @@
     "autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
 " }}}
 
-" {{{ LATEX-SUITE
-    let g:tex_flavor='latex'
-    let g:Tex_TreatMacViewerAsUNIX = 1
-    let g:Tex_ExecuteUNIXViewerInForeground = 1
-    let g:Tex_DefaultTargetFormat='dvi'
-    "let g:Tex_ViewRule_dvi='/Applications/TeXShop.app/Contents/MacOS/TeXShop *$.dvi'
-    "let g:Tex_ViewRule_pdf='/Applications/TeXShop.app/Contents/MacOS/TeXShop *$.pdf'
-    "let g:Tex_ViewRule_ps='/Applications/TeXShop.app/Contents/MacOS/TeXShop *$.ps'
-
+" {{{ LATEX-BOX
+    let g:LatexBox_latexmk_options = "-pvc -pdf"
+    let g:LatexBox_latexmk_async = 1
+    let g:LatexBox_latexmk_preview_continuously = 1
+    let g:LatexBox_quickfix = 2
+    let g:LatexBox_viewer = "/Applications/TeXShop.app/Contents/MacOS/TeXShop"
 " }}}
 
 " {{{ SYNTASTIC
