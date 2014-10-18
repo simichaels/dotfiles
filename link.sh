@@ -6,7 +6,9 @@ FILES=$(find $DIR -maxdepth 1 -mindepth 1 \
         -not -name ".*" \
         -not -name link.sh \
         -not -name README.md \
-        -not -name LICENSE-MIT.txt )
+        -not -name LICENSE-MIT.txt
+        -not -name Caskfile
+        -not -name Brewfile )
 
 COUNT=0
 for FILE in $FILES; do
