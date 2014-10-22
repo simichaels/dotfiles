@@ -117,9 +117,12 @@
     nnoremap <leader>u :GundoToggle<cr>
     nnoremap <leader>f :NERDTreeToggle<cr>
     nnoremap <leader>t :TagbarToggle<cr>
-    nnoremap <leader>e :YcmDiags<cr>
     nnoremap <leader>h :A<cr>
     nnoremap <leader>p :CtrlP<cr>
+
+    " TODO: Use YcmDiags when editing YCM-eligible files, else use Errors
+    nnoremap <leader>e :YcmDiags<cr>
+    "nnoremap <leader>e :Errors<cr>
 " }}}
 
 " {{{ AIRLINE
@@ -142,12 +145,10 @@
     "autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
 " }}}
 
-" {{{ LATEX-BOX
-    let g:LatexBox_latexmk_options = "-pvc -pdf"
-    let g:LatexBox_latexmk_async = 1
-    let g:LatexBox_latexmk_preview_continuously = 1
-    let g:LatexBox_quickfix = 2
-    let g:LatexBox_viewer = "/Applications/TeXShop.app/Contents/MacOS/TeXShop"
+" {{{ VIM-LATEX (lervag's version)
+    " Also use 'defaults write TeXShop BringPdfFrontOnAutomaticUpdate NO'
+    let g:latex_viewer = "open -a /Applications/TeXShop.app"
+    let g:latex_latexmk_continuous = 1
 " }}}
 
 " {{{ SYNTASTIC
@@ -163,6 +164,9 @@
 
     " Python 3 syntax checking
     let g:syntastic_python_python_exec = 'python3'
+
+    " Don't highlight warnings in the editor window
+    let g:syntastic_quiet_messages = { "level": "warnings" }
 " }}}
 
 " {{{ TAGBAR
