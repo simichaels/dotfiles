@@ -35,6 +35,7 @@
         set guifont=DejaVu_Sans_Mono_for_Powerline:h12
         "set columns=100 lines=30 " One quadrant in 1440x900 with this font
         set columns=117 lines=35 " One quadrant in 1680x1050 with this font
+        set guioptions-=r
     endif
 " }}}
 
@@ -149,6 +150,7 @@
     " Also use 'defaults write TeXShop BringPdfFrontOnAutomaticUpdate NO'
     let g:latex_viewer = "open -a /Applications/TeXShop.app"
     let g:latex_latexmk_continuous = 1
+    "let g:latex_quickfix_ignore_all_warnings = 1
 " }}}
 
 " {{{ SYNTASTIC
