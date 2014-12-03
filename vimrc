@@ -85,7 +85,7 @@
     nnoremap <leader>/ :nohl<cr>
     noremap <Tab> :bn<CR>
     noremap <S-Tab> :bp<CR>
-    map <esc><esc> :w<cr>
+    map <ESC><ESC> :w<cr>
     inoremap jj <ESC>
 
     " Move to next column rather than next line when wrapped
@@ -150,7 +150,10 @@
     " Also use 'defaults write TeXShop BringPdfFrontOnAutomaticUpdate NO'
     let g:latex_viewer = "open -a /Applications/TeXShop.app"
     let g:latex_latexmk_continuous = 1
-    "let g:latex_quickfix_ignore_all_warnings = 1
+    let g:latex_quickfix_ignore_all_warnings = 1
+
+    au FileType tex :NoMatchParen
+    au FileType tex setlocal nocursorline
 " }}}
 
 " {{{ SYNTASTIC
@@ -159,10 +162,12 @@
     "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
     " Make Syntastic's error markers blend in more nicely
-    hi! link SyntasticErrorLine SignColumn
+    "hi! link SyntasticErrorLine SignColumn
+    hi! link SyntasticErrorLine Normal
     hi! link SignColumn LineNr
     " Note: These colors are adjusted specifically to fit Solarized Light
     hi SyntasticErrorSign guifg=#dc322f guibg=#eee8d5
+
 
     " Python 3 syntax checking
     let g:syntastic_python_python_exec = 'python3'
