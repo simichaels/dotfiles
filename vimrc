@@ -143,7 +143,9 @@
     autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
     " Format C-like files automatically just before saving
-    "autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
+    autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
+
+    autocmd VimLeavePre * :VimLatexClean
 " }}}
 
 " {{{ VIM-LATEX (lervag's version)
@@ -154,6 +156,7 @@
 
     au FileType tex :NoMatchParen
     au FileType tex setlocal nocursorline
+    au VimLeave tex :VimLatexClean
 " }}}
 
 " {{{ SYNTASTIC
