@@ -27,8 +27,9 @@ plugins=(tmux osx brew sudo git autojump last-working-dir)
 ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=false
-ZSH_TMUX_AUTOQUIT=false
-ZSH_TMUX_FIXTERM=false
-DISABLE_AUTO_TITLE=true # Don't force auto-titling of tmux windows
+ZSH_TMUX_AUTOQUIT=true
+ZSH_TMUX_FIXTERM=true
 
 source $ZSH/oh-my-zsh.sh
+
+export EDITOR=vim

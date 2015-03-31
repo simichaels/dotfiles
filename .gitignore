@@ -1,7 +1,8 @@
 .DS_Store
-vim/.backup
-vim/.swp
-vim/.undo
-vim/.netrwhist
+vim/.backup/
+vim/.swp/
+vim/.undo/
+vim/.netrwhist/
+vim/bundle/
 ncmpcpp/error.log
 ncmpcpp/lyrics/

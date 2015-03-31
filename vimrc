@@ -1,21 +1,56 @@
-" {{{ PATHOGEN
-    " Load plugins and their documentation
-    execute pathogen#infect()
-    execute pathogen#helptags()
+" {{{ VUNDLE
+    set nocompatible
+    filetype off                        " Temporarily needed for Vundle
+    set rtp+=~/.vim/bundle/Vundle.vim   " Add Vundle to runtime path
+    call vundle#begin()
+
+    " Vundle manages itself, naturally
+    Plugin 'gmarik/Vundle.vim'
+
+    " Color scheme
+    Plugin 'altercation/vim-colors-solarized.git'
+
+    " Statusbar
+    Plugin 'bling/vim-airline'
+    Plugin 'bling/vim-bufferline'
+
+    " Filesystem
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'wincent/Command-T'
+
+    " Syntax checking/parsing
+    Plugin 'majutsushi/tagbar'
+    Plugin 'scrooloose/syntastic'
+
+    " Code formatting
+    Plugin 'rhysd/vim-clang-format'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'Raimondi/delimitMate'
+    Plugin 'LaTeX-Box-Team/LaTeX-Box'
+
+    " Navigation
+    Plugin 'Lokaltog/vim-easymotion'
+
+    " Snippets
+    Plugin 'SirVer/ultisnips'
+
+    " Git integration
+    Plugin 'tpope/vim-fugitive'
+
+    call vundle#end()
+    filetype plugin indent on   " Required.
 " }}}
 
 " {{{ GENERAL
     set autoread                " Automatically reload files that have been changed externally
-    filetype plugin indent on   " Change indentation based on filetype
-    set nocompatible            " Eschew Vi backwards-compatibility
     set wildmenu                " Enhance command-line completion
     set wildmode=list:longest   " List wildmenu matches until the longest common string
-    set shortmess+=Ic            " Don't display splash screen (+c, for YCM, requires patch 314)
+    set shortmess+=Ic           " Don't display splash screen (+c, for YCM, requires patch 314)
     set hidden                  " Enable hidden buffers
     set esckeys                 " Allow navigation in insert mode via arrow keys
     set backspace=2             " Make backspace act like it would in any other program
-    "set mouse=a                 " Enable the mouse -- warning, makes copying from terminal difficult
-    "set clipboard=unnamed       " Use the OS clipboard
+    "set mouse=a                " Enable the mouse -- warning, makes copying from terminal difficult
+    "set clipboard=unnamed      " Use the OS clipboard
     set encoding=utf-8
 
     " Set more sensible undo, swap, and backup directories to as to keep the working directory clean
@@ -55,6 +90,7 @@
     set colorcolumn=81      " Highlight column 81 on each line
     set formatoptions+=qrn1 " Allow formatting of comments with 'gq', automatically insert comment leaders, wrap numbered lists, and break before one-letter words
     set nostartofline       " Don't return the cursor to the start of the line when moving it around
+    "setlocal spell spellang=en_us,cjk " Check English spelling, ignore East Asion characters
 " }}}
 
 " {{{ FORMATTING
@@ -89,10 +125,14 @@
     inoremap jj <ESC>
 
     " Move to next column rather than next line when wrapped
-    noremap j gj
-    noremap k gk
-    noremap <Down> gj
-    noremap <Up> gk
+    "noremap j gj
+    "noremap k gk
+
+    " PURGE VIM OF SIN
+    noremap <Up> <Nop>
+    noremap <Down> <Nop>
+    noremap <Left> <Nop>
+    noremap <Right> <Nop>
 
     " Window navigation
     nnoremap <C-h> <C-w>h
@@ -128,7 +168,7 @@
 
 " {{{ AIRLINE
     let g:airline_powerline_fonts=1
-    let g:airline_enable_syntastic=1
+    let g:airline#extensions#syntastic#enabled=1
 " }}}
 "
 " {{{ CLANG-FORMAT
@@ -146,17 +186,6 @@
     autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
 
     autocmd VimLeavePre * :VimLatexClean
-" }}}
-
-" {{{ VIM-LATEX (lervag's version)
-    " Also use 'defaults write TeXShop BringPdfFrontOnAutomaticUpdate NO'
-    let g:latex_viewer = "open -a /Applications/TeXShop.app"
-    let g:latex_latexmk_continuous = 1
-    let g:latex_quickfix_ignore_all_warnings = 1
-
-    au FileType tex :NoMatchParen
-    au FileType tex setlocal nocursorline
-    au VimLeave tex :VimLatexClean
 " }}}
 
 " {{{ SYNTASTIC
