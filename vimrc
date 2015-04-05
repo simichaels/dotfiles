@@ -1,7 +1,7 @@
 " {{{ VUNDLE
-    set nocompatible
-    filetype off                        " Temporarily needed for Vundle
-    set rtp+=~/.vim/bundle/Vundle.vim   " Add Vundle to runtime path
+    set nocompatible                    " Needed for Vundle
+    filetype off                        " Ditto (this one is only temporary).
+    set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 
     " Vundle manages itself, naturally
@@ -16,7 +16,10 @@
 
     " Filesystem
     Plugin 'scrooloose/nerdtree'
-    Plugin 'wincent/Command-T'
+
+    " General
+    Plugin 'Shougo/unite.vim'
+    Plugin 'Shougo/vimproc.vim'
 
     " Syntax checking/parsing
     Plugin 'majutsushi/tagbar'
@@ -31,14 +34,16 @@
     " Navigation
     Plugin 'Lokaltog/vim-easymotion'
 
-    " Snippets
+    " Snippets and completion
     Plugin 'SirVer/ultisnips'
+    "Plugin 'ervandew/supertab'
+    Plugin 'valloric/YouCompleteMe'
 
     " Git integration
     Plugin 'tpope/vim-fugitive'
 
     call vundle#end()
-    filetype plugin indent on   " Required.
+    filetype plugin indent on           " Required.
 " }}}
 
 " {{{ GENERAL
@@ -125,8 +130,8 @@
     inoremap jj <ESC>
 
     " Move to next column rather than next line when wrapped
-    "noremap j gj
-    "noremap k gk
+    noremap j gj
+    noremap k gk
 
     " PURGE VIM OF SIN
     noremap <Up> <Nop>
@@ -159,7 +164,6 @@
     nnoremap <leader>f :NERDTreeToggle<cr>
     nnoremap <leader>t :TagbarToggle<cr>
     nnoremap <leader>h :A<cr>
-    nnoremap <leader>p :CtrlP<cr>
 
     " TODO: Use YcmDiags when editing YCM-eligible files, else use Errors
     nnoremap <leader>e :YcmDiags<cr>
@@ -182,14 +186,13 @@
     autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
     autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
-    " Format C-like files automatically just before saving
+    " Format C-like files automatically upon saving
     autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
-
-    autocmd VimLeavePre * :VimLatexClean
 " }}}
 
 " {{{ SYNTASTIC
-    " These should be unnecessary since YCM handles C-like languages
+    " Use clang and C++11 stdlib
+    " Not necessary when YCM handles C-family languages
     "let g:syntastic_cpp_compiler = 'clang++'
     "let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
@@ -212,6 +215,18 @@
     let g:tagbar_width=30
 " }}}
 
+" {{{ LATEX-BOX
+    let g:LatexBox_latexmk_async=1
+    let g:LatexBox_latexmk_preview_continuously=1
+    let g:LatexBox_viewer="open -a /Applications/TeXShop.app"
+    let g:LatexBox_quickfix=4
+    let g:LatexBox_autojump=0
+    let g:LatexBox_show_warnings=0
+    let g:LatexBox_custom_indent=0
+
+    autocmd VimLeavePre * :LatemkClean
+" }}}
+
 " {{{ YOUCOMPLETEME
     let g:ycm_global_ycm_extra_conf = "/Users/spencer/.ycm_extra_conf.py"
     let g:ycm_confirm_extra_conf = 0 " Use alternate confs without confirmation
@@ -219,4 +234,11 @@
     let g:ycm_autoclose_preview_window_after_completion = 1
     " Alternately, disable this completely
     "set completeopt-=preview
+
+    let g:ycm_key_invoke_completion = '<C-Space>'
+    let g:ycm_key_list_select_completion = ['<Tab>']
+    let g:ycm_key_list_previous_completion = ['<S-Tab>']
+    let g:ycm_semantic_triggers = {
+        \  'tex'  : ['{'],
+    \ }
 " }}}

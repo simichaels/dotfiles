@@ -1,3 +1,3 @@
 $pdf_mode = 1;
-$pdf_previewer = "start open -a /Applications/TeXShop.app %O %S";
+$pdf_previewer = "start open -a /Applications/TeXShop.app %O %S -g ";
 $pdflatex = 'xelatex %O %S';
