@@ -1,0 +1,90 @@
+priority 99
+
+extends texmath
+
+snippet enu "Enumerate" i
+\begin{enumerate}[${1:a.}]
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet als "Align*" i
+\begin{align*}
+	$0
+\end{align*}
+endsnippet
+
+snippet prn "Parentheses ()" i
+\left( $0 \right)
+endsnippet
+
+snippet ae "Align equals" i
+&= $0
+endsnippet
+
+snippet lp "Left paren" i
+\left(
+endsnippet
+
+snippet rp "Right paren" i
+\right)
+endsnippet
+
+snippet brk "Brackets []" i
+\left[ $0 \right]
+endsnippet
+
+snippet crl "Curly Brackets {}" i
+\left\{ $0 \right\}
+endsnippet
+
+snippet rl "Right-left symbol" i
+\left${1:(} $0 \right$1
+endsnippet
+
+snippet fr "Fraction" i
+\frac{$1}{$2}$0
+endsnippet
+
+snippet matrix "Matrix" i
+\left[ \begin{array}{${1:c c}}
+	${2:a & b} \\\\
+	${3:c & d}
+\end{array} \right]
+endsnippet
+
+snippet matrixdet "Matrix (determinant)" i
+\det \left| \begin{array}{${1:c c}}
+	${2:a & b} \\\\
+	${3:c & d}
+\end{array} \right|
+endsnippet
+
+snippet all "Align equation line" i
+&= $0 \\\\
+endsnippet
+
+snippet dd "Derivative" i
+\frac{d$1}{d$2}$0
+endsnippet
+
+snippet notetemp "Note template" b
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+
+\pagestyle{fancy}
+\lhead{Spencer Michaels}
+\chead{`!v strftime("%a, %d %b, %Y")`}
+\rhead{${1:course}, Sec ${2:section}}
+
+\begin{document}
+
+$0
+
+\end{document}
+endsnippet

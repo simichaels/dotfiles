@@ -1,6 +1,7 @@
 " {{{ VUNDLE
-    set nocompatible                    " Needed for Vundle
-    filetype off                        " Ditto (this one is only temporary).
+    set nocompatible
+    filetype off
+
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 
@@ -29,21 +30,21 @@
     Plugin 'rhysd/vim-clang-format'
     Plugin 'tpope/vim-commentary'
     Plugin 'Raimondi/delimitMate'
-    Plugin 'LaTeX-Box-Team/LaTeX-Box'
+    Plugin 'lervag/vimtex'
 
     " Navigation
     Plugin 'Lokaltog/vim-easymotion'
 
     " Snippets and completion
     Plugin 'SirVer/ultisnips'
-    "Plugin 'ervandew/supertab'
+    Plugin 'honza/vim-snippets'
     Plugin 'valloric/YouCompleteMe'
 
     " Git integration
     Plugin 'tpope/vim-fugitive'
 
     call vundle#end()
-    filetype plugin indent on           " Required.
+    filetype plugin indent on
 " }}}
 
 " {{{ GENERAL
@@ -92,10 +93,9 @@
     set scrolloff=3         " Keep 3 lines above/below the cursor while scrolling
     set ttyfast             " Improve rendering in the terminal
     set noerrorbells        " Disable beep on error
-    set colorcolumn=81      " Highlight column 81 on each line
+    set colorcolumn=80      " Highlight column 80 on each line
     set formatoptions+=qrn1 " Allow formatting of comments with 'gq', automatically insert comment leaders, wrap numbered lists, and break before one-letter words
     set nostartofline       " Don't return the cursor to the start of the line when moving it around
-    "setlocal spell spellang=en_us,cjk " Check English spelling, ignore East Asion characters
 " }}}
 
 " {{{ FORMATTING
@@ -170,6 +170,19 @@
     "nnoremap <leader>e :Errors<cr>
 " }}}
 
+" {{{ FILETYPE-SPECIFIC
+    " Check English spelling, ignore East Asian characters
+    "autocmd FileType tex setlocal spell spelllang=en_us,cjk
+
+    " Automatically cleanup LaTeX auxiliary files when closing Vim
+    augroup TexAutoClean
+        autocmd FileType tex :autocmd! VimLeave * :VimtexClean
+    augroup END
+
+    " Pretty unicode in Latex
+    "let g:tex_conceal='adgm'
+    "autocmd FileType tex set cole=2
+
 " {{{ AIRLINE
     let g:airline_powerline_fonts=1
     let g:airline#extensions#syntastic#enabled=1
@@ -187,7 +200,7 @@
     autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
     " Format C-like files automatically upon saving
-    autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
+    "autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
 " }}}
 
 " {{{ SYNTASTIC
@@ -203,9 +216,9 @@
     " Note: These colors are adjusted specifically to fit Solarized Light
     hi SyntasticErrorSign guifg=#dc322f guibg=#eee8d5
 
-
-    " Python 3 syntax checking
-    let g:syntastic_python_python_exec = 'python3'
+    " Python syntax checking
+    let g:syntastic_python_python_exec = '/usr/local/bin/python'
+    "let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
     " Don't highlight warnings in the editor window
     let g:syntastic_quiet_messages = { "level": "warnings" }
@@ -215,16 +228,16 @@
     let g:tagbar_width=30
 " }}}
 
-" {{{ LATEX-BOX
-    let g:LatexBox_latexmk_async=1
-    let g:LatexBox_latexmk_preview_continuously=1
-    let g:LatexBox_viewer="open -a /Applications/TeXShop.app"
-    let g:LatexBox_quickfix=4
-    let g:LatexBox_autojump=0
-    let g:LatexBox_show_warnings=0
-    let g:LatexBox_custom_indent=0
+" {{{ VIMTEX
+    " Also use 'defaults write TeXShop BringPdfFrontOnAutomaticUpdate NO'
+    let g:vimtex_view_method = 'general'
+    let g:vimtex_view_general_viewer = 'open'
+    let g:vimtex_view_general_options = '-a /Applications/TeXShop.app'
+    let g:vimtex_latexmk_continuous = 1
+    let g:vimtex_quickfix_ignore_all_warnings = 1
 
-    autocmd VimLeavePre * :LatemkClean
+    " plaintex = tex
+    let g:tex_flavor='latex'
 " }}}
 
 " {{{ YOUCOMPLETEME
@@ -241,4 +254,12 @@
     let g:ycm_semantic_triggers = {
         \  'tex'  : ['{'],
     \ }
+" }}}
+
+" ULTISNIPS {{{
+    let g:UltiSnipsExpandTrigger="<C-j>"
+    let g:UltiSnipsJumpForwardTrigger="<C-j>"
+
+    let g:UltiSnipsListSnippets="<C-l>"
+    let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " }}}
