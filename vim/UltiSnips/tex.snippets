@@ -34,8 +34,8 @@ snippet brk "Brackets []" i
 \left[ $0 \right]
 endsnippet
 
-snippet crl "Curly Brackets {}" i
-\left\{ $0 \right\}
+snippet cur "Curly Brackets {}" i
+\left\\{ $0 \right\\}
 endsnippet
 
 snippet rl "Right-left symbol" i
@@ -46,10 +46,43 @@ snippet fr "Fraction" i
 \frac{$1}{$2}$0
 endsnippet
 
+snippet set "set" i
+\\{$1\\}$0
+endsnippet
+
+snippet mb "mathbb" i
+\mathbb{$1}$0
+endsnippet
+
+snippet bld "bold" i
+\textbf{$1}$0
+endsnippet
+snippet ita "italic" i
+\textit{$1}$0
+endsnippet
+snippet und "underline" i
+\underline{$1}$0
+endsnippet
+snippet range "Range" i
+$1_1,\dots,$1_$2$0
+endsnippet
+snippet corv "Coordinate vector" i
+[$1]_{\mathcal{B}}$0
+endsnippet
+snippet rn "R^n"
+\mathbb R^n
+endsnippet
+
+snippet bmat "bmatrix" i
+\begin{bmatrix}
+	$0 \\\\
+\end{bmatrix}
+endsnippet
+
 snippet matrix "Matrix" i
 \left[ \begin{array}{${1:c c}}
-	${2:a & b} \\\\
-	${3:c & d}
+			${2:a & b} \\\\
+			${3:c & d}
 \end{array} \right]
 endsnippet
 
@@ -65,7 +98,11 @@ snippet all "Align equation line" i
 endsnippet
 
 snippet dd "Derivative" i
-\frac{d$1}{d$2}$0
+\frac{d $1}{d $2}$0
+endsnippet
+
+snippet dp "Partial derivative" i
+\frac{\delta $1}{\delta $2}$0
 endsnippet
 
 snippet notetemp "Note template" b

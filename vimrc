@@ -168,6 +168,11 @@
     " TODO: Use YcmDiags when editing YCM-eligible files, else use Errors
     nnoremap <leader>e :YcmDiags<cr>
     "nnoremap <leader>e :Errors<cr>
+
+    " Swap ; and :
+    " TODO: this breaks the above defined commands.
+    "noremap ; :
+    "noremap : ;
 " }}}
 
 " {{{ FILETYPE-SPECIFIC
@@ -180,14 +185,18 @@
     augroup END
 
     " Pretty unicode in Latex
-    "let g:tex_conceal='adgm'
+    let g:tex_conceal='adgm'
     "autocmd FileType tex set cole=2
+
+    " For crontab editing on OSX
+    autocmd filetype crontab setlocal nobackup nowritebackup
+" }}}
 
 " {{{ AIRLINE
     let g:airline_powerline_fonts=1
     let g:airline#extensions#syntastic#enabled=1
 " }}}
-"
+
 " {{{ CLANG-FORMAT
     let g:clang_format#code_style = "llvm"
     let g:clang_format#style_options = {
@@ -201,6 +210,11 @@
 
     " Format C-like files automatically upon saving
     "autocmd FileType c,cpp,objc autocmd BufWritePre <buffer> :ClangFormat
+" }}}
+"
+" {{{ DELIMITMATE
+    let g:delimitMate_quotes="\" ' ` * $ |"
+    let g:delimitMate_smart_matchpairs=""
 " }}}
 
 " {{{ SYNTASTIC
